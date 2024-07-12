@@ -6,6 +6,7 @@ import 'package:islami_app/views/radio_view.dart';
 import 'package:islami_app/views/sebha_view.dart';
 import 'package:islami_app/views/setting_view.dart';
 import 'package:islami_app/views/splash_view.dart';
+import 'package:islami_app/views/sura_details_view.dart';
 
 void main() {
   runApp(const IslamiApp());
@@ -27,6 +28,7 @@ class IslamiApp extends StatelessWidget {
         RadioView.id: (context) => const RadioView(),
         HomeView.id: (context) => const HomeView(),
         SettingView.id: (context) => const SettingView(),
+        SuraDetailsView.id: (context) => const SuraDetailsView(),
       },
     );
   }
