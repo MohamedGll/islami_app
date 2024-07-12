@@ -28,9 +28,11 @@ class _HomeViewState extends State<HomeView> {
       body: views.elementAt(currentIndex),
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 12,
+        type: BottomNavigationBarType.fixed,
         iconSize: 10,
         showUnselectedLabels: false,
         selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.white,
         backgroundColor: const Color(0xffB7935F),
         currentIndex: currentIndex,
         onTap: (index) {
@@ -38,43 +40,47 @@ class _HomeViewState extends State<HomeView> {
             currentIndex = index;
           });
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/images/icon_radio.png',
-              width: 31,
-              height: 29,
+            icon: ImageIcon(
+              size: 32,
+              AssetImage(
+                'assets/images/icon_radio.png',
+              ),
             ),
             label: 'الراديو',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/images/icon_sebha.png',
-              width: 42,
-              height: 40,
+            icon: ImageIcon(
+              size: 32,
+              AssetImage(
+                'assets/images/icon_sebha.png',
+              ),
             ),
             label: 'التسبيح',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/images/icon_hadeth.png',
-              width: 27.12,
-              height: 22.6,
+            icon: ImageIcon(
+              size: 32,
+              AssetImage(
+                'assets/images/icon_hadeth.png',
+              ),
             ),
             label: 'الأحاديث',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/images/icon_quran.png',
-              width: 42,
-              height: 40,
+            icon: ImageIcon(
+              size: 38,
+              AssetImage(
+                'assets/images/icon_quran.png',
+              ),
             ),
             label: 'القرآن',
           ),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(
               Icons.settings,
-              size: 28,
+              size: 32,
               color: Colors.white,
             ),
             label: 'الاعدادات',
