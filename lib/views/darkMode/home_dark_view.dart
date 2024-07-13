@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/views/ahades_view.dart';
-import 'package:islami_app/views/quran_view.dart';
-import 'package:islami_app/views/radio_view.dart';
-import 'package:islami_app/views/sebha_view.dart';
-import 'package:islami_app/views/setting_view.dart';
+import 'package:islami_app/constant.dart';
+import 'package:islami_app/views/darkMode/ahades_dark_view.dart';
+import 'package:islami_app/views/darkMode/quran_view.dart';
+import 'package:islami_app/views/darkMode/radio_dark_view.dart';
+import 'package:islami_app/views/darkMode/sebha_dark_view.dart';
+import 'package:islami_app/views/darkMode/settings_dark_view.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({super.key});
-  static const String id = 'HomeView';
+class HomeDarkView extends StatefulWidget {
+  const HomeDarkView({super.key});
+  static const String id = 'HomeDarkView';
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<HomeDarkView> createState() => _HomeDarkViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _HomeDarkViewState extends State<HomeDarkView> {
   int currentIndex = 0;
   List<Widget> views = [
-    const RadioView(),
-    const SebhaView(),
-    const AhadesView(),
-    const QuranView(),
-    const SettingView(),
+    const SettingsDarkView(),
+    const RadioDarkView(),
+    const SebhaDarkView(),
+    const AhadesDarkView(),
+    const QuranDarkView(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -31,9 +32,9 @@ class _HomeViewState extends State<HomeView> {
         type: BottomNavigationBarType.fixed,
         iconSize: 10,
         showUnselectedLabels: false,
-        selectedItemColor: Colors.black,
+        selectedItemColor: kPrimaryColorDark,
         unselectedItemColor: Colors.white,
-        backgroundColor: const Color(0xffB7935F),
+        backgroundColor: const Color(0xff141A2E),
         currentIndex: currentIndex,
         onTap: (index) {
           setState(() {
@@ -41,6 +42,14 @@ class _HomeViewState extends State<HomeView> {
           });
         },
         items: const [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.settings,
+              size: 32,
+              color: Colors.white,
+            ),
+            label: 'الاعدادات',
+          ),
           BottomNavigationBarItem(
             icon: ImageIcon(
               size: 32,
@@ -76,14 +85,6 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
             label: 'القرآن',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.settings,
-              size: 32,
-              color: Colors.white,
-            ),
-            label: 'الاعدادات',
           ),
         ],
       ),

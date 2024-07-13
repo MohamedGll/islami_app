@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class SebhaView extends StatefulWidget {
-  const SebhaView({super.key});
-  static const String id = 'SebhaView';
+class SebhaDarkView extends StatefulWidget {
+  const SebhaDarkView({super.key});
+  static const String id = 'SebhaDarkView';
 
   @override
-  State<SebhaView> createState() => _SebhaViewState();
+  State<SebhaDarkView> createState() => _SebhaDarkViewState();
 }
 
-class _SebhaViewState extends State<SebhaView> {
+class _SebhaDarkViewState extends State<SebhaDarkView> {
   int counter = 0;
   int index = 0;
   String label = 'سبحان الله';
@@ -35,7 +35,7 @@ class _SebhaViewState extends State<SebhaView> {
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage(
-                'assets/images/default_bg.png',
+                'assets/images/dark_bg.png',
               ),
               fit: BoxFit.cover,
             ),
@@ -48,7 +48,7 @@ class _SebhaViewState extends State<SebhaView> {
               const Text(
                 'إسلامي',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: 30,
                   fontFamily: 'El Messiri',
                 ),
@@ -61,7 +61,7 @@ class _SebhaViewState extends State<SebhaView> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      if (counter <= 32) {
+                      if (counter < 32) {
                         rotateImage();
                         counter++;
                         setState(() {});
@@ -80,7 +80,7 @@ class _SebhaViewState extends State<SebhaView> {
                     child: Transform.rotate(
                       angle: rotation,
                       child: Image.asset(
-                        'assets/images/body_sebha_logo.png',
+                        'assets/images/body_sebha_dark.png',
                         width: 232,
                         height: 234,
                       ),
@@ -90,7 +90,7 @@ class _SebhaViewState extends State<SebhaView> {
                     left: 100,
                     bottom: 207,
                     child: Image.asset(
-                      'assets/images/head_sebha_logo.png',
+                      'assets/images/head_sebha_dark.png',
                       width: 73,
                       height: 105,
                     ),
@@ -103,7 +103,7 @@ class _SebhaViewState extends State<SebhaView> {
               const Text(
                 'عدد التسبيحات',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: 25,
                   fontFamily: 'El Messiri',
                 ),
@@ -115,7 +115,7 @@ class _SebhaViewState extends State<SebhaView> {
                 width: 69,
                 height: 81,
                 decoration: BoxDecoration(
-                  color: const Color(0xffC9B496),
+                  color: const Color(0xff141A2E),
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: Center(
@@ -123,6 +123,7 @@ class _SebhaViewState extends State<SebhaView> {
                     '$counter',
                     style: const TextStyle(
                       fontSize: 25,
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -134,7 +135,7 @@ class _SebhaViewState extends State<SebhaView> {
                 width: 137,
                 height: 51,
                 decoration: BoxDecoration(
-                  color: const Color(0xffB7935F),
+                  color: const Color(0xffFACC1D),
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: Center(

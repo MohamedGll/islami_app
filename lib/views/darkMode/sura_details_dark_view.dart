@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:islami_app/constant.dart';
 
-class SuraDetailsView extends StatelessWidget {
-  const SuraDetailsView({super.key});
-  static const String id = 'SuraView';
+class SuraDetailsDarkView extends StatelessWidget {
+  const SuraDetailsDarkView({super.key});
+  static const String id = 'SuraDetailsDarkView';
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +79,7 @@ class SuraDetailsView extends StatelessWidget {
                       ],
                     ),
                     Divider(
-                      color: kPrimaryColor,
+                      color: kPrimaryColorDark,
                       endIndent: 70,
                       indent: 70,
                     ),

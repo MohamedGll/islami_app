@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/constant.dart';
-import 'package:islami_app/views/sura_details_view.dart';
+import 'package:islami_app/views/lightMode/sura_details_view.dart';
 
 class QuranView extends StatelessWidget {
   const QuranView({super.key});
@@ -162,7 +162,7 @@ class QuranView extends StatelessWidget {
                         children: [
                           Divider(
                             thickness: 3,
-                            color: kPrimaryColor,
+                            color: kPrimaryColorLight,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -187,7 +187,7 @@ class QuranView extends StatelessWidget {
                           ),
                           Divider(
                             thickness: 3,
-                            color: kPrimaryColor,
+                            color: kPrimaryColorLight,
                           )
                         ],
                       ),
@@ -215,7 +215,7 @@ class QuranView extends StatelessWidget {
                             ),
                           ),
                           const VerticalDivider(
-                            color: kPrimaryColor,
+                            color: kPrimaryColorLight,
                             indent: 7,
                             thickness: 3,
                           ),
@@ -236,7 +236,7 @@ class QuranView extends StatelessWidget {
                                         );
                                       },
                                       child: Text(
-                                        '${surasList[index]}',
+                                        surasList[index],
                                         textAlign: TextAlign.center,
                                         style: const TextStyle(
                                           fontSize: 25,
