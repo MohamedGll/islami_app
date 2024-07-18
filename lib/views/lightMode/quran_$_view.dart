@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:islami_app/constant.dart';
 import 'package:islami_app/models/sura_model.dart';
 import 'package:islami_app/views/lightMode/sura_details_view.dart';
 
-class QuranView extends StatefulWidget {
-  const QuranView({super.key});
+class Quran$View extends StatelessWidget {
+  const Quran$View({super.key});
   static const String id = 'QuranView';
-
-  @override
-  State<QuranView> createState() => _QuranViewState();
-}
-
-class _QuranViewState extends State<QuranView> {
   final List<String> surasList = const [
     "الفاتحه",
     "البقرة",
@@ -132,8 +125,6 @@ class _QuranViewState extends State<QuranView> {
 
   @override
   Widget build(BuildContext context) {
-    loadSuraFile();
-
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -201,8 +192,34 @@ class _QuranViewState extends State<QuranView> {
                           )
                         ],
                       ),
-                      Stack(
+                      Row(
                         children: [
+                          Expanded(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 77, bottom: 16),
+                              child: ListView.builder(
+                                itemBuilder: (context, index) {
+                                  return const Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 6),
+                                    child: Text(
+                                      '286',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: 25,
+                                      ),
+                                    ),
+                                  );
+                                },
+                                itemCount: 20,
+                              ),
+                            ),
+                          ),
+                          const VerticalDivider(
+                            color: kPrimaryColorLight,
+                            indent: 7,
+                            thickness: 3,
+                          ),
                           Expanded(
                             child: Padding(
                               padding:
@@ -221,26 +238,11 @@ class _QuranViewState extends State<QuranView> {
                                               surasList[index], index),
                                         );
                                       },
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 55),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              '${ayaCount[index]}',
-                                              style: const TextStyle(
-                                                fontSize: 25,
-                                              ),
-                                            ),
-                                            Text(
-                                              surasList[index],
-                                              style: const TextStyle(
-                                                fontSize: 25,
-                                              ),
-                                            ),
-                                          ],
+                                      child: Text(
+                                        surasList[index],
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                          fontSize: 25,
                                         ),
                                       ),
                                     ),
@@ -248,13 +250,6 @@ class _QuranViewState extends State<QuranView> {
                                 },
                                 itemCount: surasList.length,
                               ),
-                            ),
-                          ),
-                          const Center(
-                            child: VerticalDivider(
-                              color: kPrimaryColorLight,
-                              indent: 7,
-                              thickness: 3,
                             ),
                           ),
                         ],
@@ -268,17 +263,5 @@ class _QuranViewState extends State<QuranView> {
         ),
       ),
     );
-  }
-
-  List<int> ayaCount = [];
-
-  loadSuraFile() async {
-    for (int i = 0; i < surasList.length; i++) {
-      String sura = await rootBundle.loadString('assets/files/${i + 1}.txt');
-
-      List<String> suraLines = sura.split('\n');
-      ayaCount.add(suraLines.length);
-    }
-    setState(() {});
   }
 }

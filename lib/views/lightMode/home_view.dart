@@ -16,11 +16,11 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   int currentIndex = 0;
   List<Widget> views = [
-    const SettingsView(),
+    const QuranView(),
     const RadioView(),
     const SebhaView(),
     const AhadesView(),
-    const QuranView(),
+    const SettingsView(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -42,12 +42,13 @@ class _HomeViewState extends State<HomeView> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.settings,
-              size: 32,
-              color: Colors.white,
+            icon: ImageIcon(
+              size: 38,
+              AssetImage(
+                'assets/images/icon_quran.png',
+              ),
             ),
-            label: 'الاعدادات',
+            label: 'القرآن',
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(
@@ -77,13 +78,11 @@ class _HomeViewState extends State<HomeView> {
             label: 'الأحاديث',
           ),
           BottomNavigationBarItem(
-            icon: ImageIcon(
-              size: 38,
-              AssetImage(
-                'assets/images/icon_quran.png',
-              ),
+            icon: Icon(
+              Icons.settings,
+              size: 32,
             ),
-            label: 'القرآن',
+            label: 'الاعدادات',
           ),
         ],
       ),

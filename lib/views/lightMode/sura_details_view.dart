@@ -2,13 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:islami_app/constant.dart';
+import 'package:islami_app/models/sura_model.dart';
 
-class SuraDetailsView extends StatelessWidget {
+class SuraDetailsView extends StatefulWidget {
   const SuraDetailsView({super.key});
   static const String id = 'SuraDetailsView';
 
   @override
+  State<SuraDetailsView> createState() => _SuraDetailsViewState();
+}
+
+class _SuraDetailsViewState extends State<SuraDetailsView> {
+  List<String> verses = [];
+  @override
   Widget build(BuildContext context) {
+    var model = ModalRoute.of(context)!.settings.arguments as SuraModel;
+    if (verses.isEmpty) {
+      loadSuraFile(model.index!);
+    }
+
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -52,54 +64,59 @@ class SuraDetailsView extends StatelessWidget {
                 width: 354,
                 height: 600,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Colors.white.withOpacity(.7),
                   borderRadius: BorderRadius.circular(25),
                 ),
-                child: const Column(
+                child: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 32,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(right: 12),
+                          padding: const EdgeInsets.only(right: 12),
                           child: Text(
-                            'سورة البقرة',
-                            style: TextStyle(
+                            'سورة ${model.name}',
+                            style: const TextStyle(
                               fontSize: 25,
                             ),
                           ),
                         ),
-                        FaIcon(
+                        const FaIcon(
                           Icons.play_circle,
                           size: 27,
                         ),
                       ],
                     ),
-                    Divider(
+                    const Divider(
                       color: kPrimaryColorLight,
                       endIndent: 70,
                       indent: 70,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 18,
                     ),
-                    Text(
-                      '''
-بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ 
-الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ
- الرَّحْمَنِ الرَّحِيمِ
- مَالِكِ يَوْمِ الدِّينِ
- إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ
- اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ
- صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّين
-
-''',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 20,
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 32),
+                        child: ListView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.all(6.0),
+                              child: Text(
+                                verses[index],
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                ),
+                              ),
+                            );
+                          },
+                          itemCount: verses.length,
+                        ),
                       ),
                     ),
                   ],
@@ -112,7 +129,10 @@ class SuraDetailsView extends StatelessWidget {
     );
   }
 
-  Future<String> getFileData(String index) async {
-    return await rootBundle.loadString(index);
+  loadSuraFile(int index) async {
+    String sura = await rootBundle.loadString('assets/files/${index + 1}.txt');
+    List<String> suraLines = sura.split('\n');
+    verses = suraLines;
+    setState(() {});
   }
 }

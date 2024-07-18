@@ -1,6 +1,6 @@
 class SuraModel {
   String? name;
-  String? index;
+  int? index;
   SuraModel(
     this.name,
     this.index,
