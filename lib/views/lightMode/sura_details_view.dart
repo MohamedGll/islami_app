@@ -54,6 +54,7 @@ class _SuraDetailsViewState extends State<SuraDetailsView> {
                     color: Colors.black,
                     fontSize: 30,
                     fontFamily: 'El Messiri',
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ],
@@ -110,7 +111,8 @@ class _SuraDetailsViewState extends State<SuraDetailsView> {
                                 verses[index],
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w400,
                                 ),
                               ),
                             );

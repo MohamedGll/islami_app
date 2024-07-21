@@ -24,68 +24,90 @@ class _HomeViewState extends State<HomeView> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: views.elementAt(currentIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedFontSize: 12,
-        type: BottomNavigationBarType.fixed,
-        iconSize: 10,
-        showUnselectedLabels: false,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.white,
-        backgroundColor: const Color(0xffB7935F),
-        currentIndex: currentIndex,
-        onTap: (index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: ImageIcon(
-              size: 38,
-              AssetImage(
-                'assets/images/icon_quran.png',
+    return Stack(
+      children: [
+        const Image(
+          image: AssetImage(
+            'assets/images/default_bg.png',
+          ),
+        ),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            centerTitle: true,
+            title: const Text(
+              'إسلامي',
+              style: TextStyle(
+                fontSize: 30,
+                fontFamily: 'El Messiri',
+                fontWeight: FontWeight.bold,
               ),
             ),
-            label: 'القرآن',
           ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(
-              size: 32,
-              AssetImage(
-                'assets/images/icon_radio.png',
+          body: views.elementAt(currentIndex),
+          bottomNavigationBar: BottomNavigationBar(
+            selectedFontSize: 12,
+            type: BottomNavigationBarType.fixed,
+            iconSize: 10,
+            showUnselectedLabels: false,
+            selectedItemColor: Colors.black,
+            unselectedItemColor: Colors.white,
+            backgroundColor: const Color(0xffB7935F),
+            currentIndex: currentIndex,
+            onTap: (index) {
+              setState(() {
+                currentIndex = index;
+              });
+            },
+            items: const [
+              BottomNavigationBarItem(
+                icon: ImageIcon(
+                  size: 38,
+                  AssetImage(
+                    'assets/images/icon_quran.png',
+                  ),
+                ),
+                label: 'القرآن',
               ),
-            ),
-            label: 'الراديو',
-          ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(
-              size: 32,
-              AssetImage(
-                'assets/images/icon_sebha.png',
+              BottomNavigationBarItem(
+                icon: ImageIcon(
+                  size: 32,
+                  AssetImage(
+                    'assets/images/icon_radio.png',
+                  ),
+                ),
+                label: 'الراديو',
               ),
-            ),
-            label: 'التسبيح',
-          ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(
-              size: 32,
-              AssetImage(
-                'assets/images/icon_hadeth.png',
+              BottomNavigationBarItem(
+                icon: ImageIcon(
+                  size: 32,
+                  AssetImage(
+                    'assets/images/icon_sebha.png',
+                  ),
+                ),
+                label: 'التسبيح',
               ),
-            ),
-            label: 'الأحاديث',
+              BottomNavigationBarItem(
+                icon: ImageIcon(
+                  size: 32,
+                  AssetImage(
+                    'assets/images/icon_hadeth.png',
+                  ),
+                ),
+                label: 'الأحاديث',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.settings,
+                  size: 32,
+                ),
+                label: 'الاعدادات',
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.settings,
-              size: 32,
-            ),
-            label: 'الاعدادات',
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

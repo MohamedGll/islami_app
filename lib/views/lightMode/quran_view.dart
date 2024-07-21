@@ -131,142 +131,116 @@ class _QuranViewState extends State<QuranView> {
   ];
 
   @override
-  Widget build(BuildContext context) {
-    loadSuraFile();
+  void initState() {
+    super.initState();
+    if (ayaCount.isEmpty) {
+      loadSuraFile();
+      setState(() {});
+    }
+  }
 
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                'assets/images/default_bg.png',
-              ),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: Column(
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Image.asset(
+          'assets/images/qur2an_screen_logo.png',
+          width: 205,
+          height: 227,
+        ),
+        Expanded(
+          child: Stack(
             children: [
-              const SizedBox(
-                height: 2,
-              ),
-              const Text(
-                'إسلامي',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 30,
-                  fontFamily: 'El Messiri',
-                ),
-              ),
-              Image.asset(
-                'assets/images/qur2an_screen_logo.png',
-                width: 205,
-                height: 227,
-              ),
-              Expanded(
-                child: IntrinsicHeight(
-                  child: Stack(
+              const Column(
+                children: [
+                  Divider(
+                    thickness: 3,
+                    color: kPrimaryColorLight,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      const Column(
-                        children: [
-                          Divider(
-                            thickness: 3,
-                            color: kPrimaryColorLight,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      Text(
+                        'عدد الآيات',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 25,
+                          fontFamily: 'El Messiri',
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        'اسم السورة',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 25,
+                          fontFamily: 'El Messiri',
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Divider(
+                    thickness: 3,
+                    color: kPrimaryColorLight,
+                  )
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 77, bottom: 16),
+                child: ListView.builder(
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 6),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            SuraDetailsView.id,
+                            arguments: SuraModel(surasList[index], index),
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 55),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'عدد الآيات',
-                                style: TextStyle(
-                                  color: Colors.black,
+                                '${ayaCount[index]}',
+                                style: const TextStyle(
                                   fontSize: 25,
-                                  fontFamily: 'El Messiri',
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
                               Text(
-                                'اسم السورة',
-                                style: TextStyle(
-                                  color: Colors.black,
+                                surasList[index],
+                                style: const TextStyle(
                                   fontSize: 25,
+                                  fontWeight: FontWeight.w600,
                                   fontFamily: 'El Messiri',
                                 ),
                               ),
                             ],
                           ),
-                          Divider(
-                            thickness: 3,
-                            color: kPrimaryColorLight,
-                          )
-                        ],
+                        ),
                       ),
-                      Stack(
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 77, bottom: 16),
-                              child: ListView.builder(
-                                itemBuilder: (context, index) {
-                                  return Padding(
-                                    padding:
-                                        const EdgeInsets.symmetric(vertical: 6),
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        Navigator.pushNamed(
-                                          context,
-                                          SuraDetailsView.id,
-                                          arguments: SuraModel(
-                                              surasList[index], index),
-                                        );
-                                      },
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 55),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              '${ayaCount[index]}',
-                                              style: const TextStyle(
-                                                fontSize: 25,
-                                              ),
-                                            ),
-                                            Text(
-                                              surasList[index],
-                                              style: const TextStyle(
-                                                fontSize: 25,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                                itemCount: surasList.length,
-                              ),
-                            ),
-                          ),
-                          const Center(
-                            child: VerticalDivider(
-                              color: kPrimaryColorLight,
-                              indent: 7,
-                              thickness: 3,
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
+                    );
+                  },
+                  itemCount: surasList.length,
                 ),
               ),
+              const Center(
+                child: VerticalDivider(
+                  color: kPrimaryColorLight,
+                  indent: 7,
+                  thickness: 3,
+                ),
+              )
             ],
           ),
         ),
-      ),
+      ],
     );
   }
 
@@ -276,7 +250,7 @@ class _QuranViewState extends State<QuranView> {
     for (int i = 0; i < surasList.length; i++) {
       String sura = await rootBundle.loadString('assets/files/${i + 1}.txt');
 
-      List<String> suraLines = sura.split('\n');
+      List<String> suraLines = sura.trim().split('\n');
       ayaCount.add(suraLines.length);
     }
     setState(() {});
