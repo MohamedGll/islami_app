@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/constant.dart';
 import 'package:islami_app/models/hadeth_model.dart';
 
 class HadethDetailsView extends StatefulWidget {
@@ -39,17 +38,16 @@ class _HadethDetailsViewState extends State<HadethDetailsView> {
                 ),
                 child: Column(
                   children: [
+                    const SizedBox(
+                      height: 28,
+                    ),
                     Text(
                       '${model.title}',
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     const Divider(
-                      color: kPrimaryColorLight,
-                      endIndent: 70,
-                      indent: 70,
-                    ),
-                    const SizedBox(
-                      height: 18,
+                      endIndent: 40,
+                      indent: 40,
                     ),
                     Expanded(
                       child: Padding(

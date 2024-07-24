@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/my_theme_data.dart';
-import 'package:islami_app/views/lightMode/hadeth_details_view.dart';
-import 'package:islami_app/views/lightMode/splash_view.dart';
-import 'package:islami_app/views/lightMode/home_view.dart';
-import 'package:islami_app/views/lightMode/sura_details_view.dart';
+import 'package:islami_app/views/hadeth_details_view.dart';
+import 'package:islami_app/views/splash_view.dart';
+import 'package:islami_app/views/home_view.dart';
+import 'package:islami_app/views/sura_details_view.dart';
 
 void main() {
   runApp(const IslamiApp());
@@ -15,7 +15,7 @@ class IslamiApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       theme: MyThemeData.lightTheme,
       darkTheme: MyThemeData.darkTheme,
       debugShowCheckedModeBanner: false,

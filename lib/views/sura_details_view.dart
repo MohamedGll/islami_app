@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:islami_app/constant.dart';
 import 'package:islami_app/models/sura_model.dart';
 
 class SuraDetailsView extends StatefulWidget {
@@ -85,9 +84,8 @@ class _SuraDetailsViewState extends State<SuraDetailsView> {
                       ],
                     ),
                     const Divider(
-                      color: kPrimaryColorLight,
-                      endIndent: 70,
-                      indent: 70,
+                      endIndent: 40,
+                      indent: 40,
                     ),
                     const SizedBox(
                       height: 18,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/views/lightMode/home_view.dart';
+import 'package:islami_app/views/home_view.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});

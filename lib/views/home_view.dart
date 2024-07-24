@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/views/lightMode/ahades_view.dart';
-import 'package:islami_app/views/lightMode/quran_view.dart';
-import 'package:islami_app/views/lightMode/radio_view.dart';
-import 'package:islami_app/views/lightMode/sebha_view.dart';
-import 'package:islami_app/views/lightMode/settings_view.dart';
+import 'package:islami_app/views/ahades_view.dart';
+import 'package:islami_app/views/quran_view.dart';
+import 'package:islami_app/views/radio_view.dart';
+import 'package:islami_app/views/sebha_view.dart';
+import 'package:islami_app/views/settings_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});

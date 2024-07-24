@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami_app/constant.dart';
 import 'package:islami_app/models/hadeth_model.dart';
-import 'package:islami_app/views/lightMode/hadeth_details_view.dart';
+import 'package:islami_app/views/hadeth_details_view.dart';
 
 class AhadesView extends StatefulWidget {
   const AhadesView({super.key});
@@ -13,7 +13,7 @@ class AhadesView extends StatefulWidget {
 }
 
 class _AhadesViewState extends State<AhadesView> {
-  List<HadethModel> allAhadeth = const [];
+  List<HadethModel> allAhadeth = [];
 
   @override
   void initState() {
@@ -48,6 +48,7 @@ class _AhadesViewState extends State<AhadesView> {
         ),
         Expanded(
           child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),
@@ -85,7 +86,6 @@ class _AhadesViewState extends State<AhadesView> {
           hadethLines.removeAt(0);
           List<String> content = hadethLines;
           HadethModel hadethModel = HadethModel(title, content);
-          print(title);
           allAhadeth.add(hadethModel);
           setState(() {});
         }
