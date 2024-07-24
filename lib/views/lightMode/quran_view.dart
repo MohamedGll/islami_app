@@ -13,6 +13,7 @@ class QuranView extends StatefulWidget {
 }
 
 class _QuranViewState extends State<QuranView> {
+  final List<int> ayaCount = [];
   final List<String> surasList = const [
     "الفاتحه",
     "البقرة",
@@ -135,7 +136,6 @@ class _QuranViewState extends State<QuranView> {
     super.initState();
     if (ayaCount.isEmpty) {
       loadSuraFile();
-      setState(() {});
     }
   }
 
@@ -244,15 +244,12 @@ class _QuranViewState extends State<QuranView> {
     );
   }
 
-  List<int> ayaCount = [];
-
   loadSuraFile() async {
     for (int i = 0; i < surasList.length; i++) {
       String sura = await rootBundle.loadString('assets/files/${i + 1}.txt');
-
       List<String> suraLines = sura.trim().split('\n');
       ayaCount.add(suraLines.length);
+      setState(() {});
     }
-    setState(() {});
   }
 }
