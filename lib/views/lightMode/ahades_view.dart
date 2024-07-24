@@ -37,14 +37,10 @@ class _AhadesViewState extends State<AhadesView> {
           color: kPrimaryColorLight,
           thickness: 3,
         ),
-        const Text(
+        Text(
           'الأحاديث',
           textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 25,
-            fontFamily: 'El Messiri',
-            fontWeight: FontWeight.w600,
-          ),
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
         const Divider(
           color: kPrimaryColorLight,
@@ -66,9 +62,7 @@ class _AhadesViewState extends State<AhadesView> {
                   child: Text(
                     '${allAhadeth[index].title}',
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 30,
-                    ),
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ),
               );

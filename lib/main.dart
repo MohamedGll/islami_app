@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/my_theme_data.dart';
 import 'package:islami_app/views/lightMode/hadeth_details_view.dart';
 import 'package:islami_app/views/lightMode/splash_view.dart';
 import 'package:islami_app/views/lightMode/home_view.dart';
@@ -14,6 +15,9 @@ class IslamiApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      themeMode: ThemeMode.dark,
+      theme: MyThemeData.lightTheme,
+      darkTheme: MyThemeData.darkTheme,
       debugShowCheckedModeBanner: false,
       initialRoute: SplashView.id,
       routes: {

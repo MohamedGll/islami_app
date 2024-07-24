@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami_app/constant.dart';
 import 'package:islami_app/models/sura_model.dart';
 import 'package:islami_app/views/lightMode/sura_details_view.dart';
 
@@ -152,38 +151,26 @@ class _QuranViewState extends State<QuranView> {
         Expanded(
           child: Stack(
             children: [
-              const Column(
+              Column(
                 children: [
-                  Divider(
+                  const Divider(
                     thickness: 3,
-                    color: kPrimaryColorLight,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text(
                         'عدد الآيات',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 25,
-                          fontFamily: 'El Messiri',
-                          fontWeight: FontWeight.w600,
-                        ),
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                       Text(
                         'اسم السورة',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 25,
-                          fontFamily: 'El Messiri',
-                          fontWeight: FontWeight.w600,
-                        ),
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ],
                   ),
-                  Divider(
+                  const Divider(
                     thickness: 3,
-                    color: kPrimaryColorLight,
                   )
                 ],
               ),
@@ -208,18 +195,11 @@ class _QuranViewState extends State<QuranView> {
                             children: [
                               Text(
                                 '${ayaCount[index]}',
-                                style: const TextStyle(
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                                style: Theme.of(context).textTheme.bodyMedium,
                               ),
                               Text(
                                 surasList[index],
-                                style: const TextStyle(
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'El Messiri',
-                                ),
+                                style: Theme.of(context).textTheme.bodyMedium,
                               ),
                             ],
                           ),
@@ -232,7 +212,6 @@ class _QuranViewState extends State<QuranView> {
               ),
               const Center(
                 child: VerticalDivider(
-                  color: kPrimaryColorLight,
                   indent: 7,
                   thickness: 3,
                 ),

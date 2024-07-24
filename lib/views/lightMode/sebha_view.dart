@@ -79,13 +79,9 @@ class _SebhaViewState extends State<SebhaView> {
           const SizedBox(
             height: 28,
           ),
-          const Text(
+          Text(
             'عدد التسبيحات',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 25,
-              fontFamily: 'El Messiri',
-            ),
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(
             height: 12,
@@ -100,9 +96,7 @@ class _SebhaViewState extends State<SebhaView> {
             child: Center(
               child: Text(
                 '$counter',
-                style: const TextStyle(
-                  fontSize: 25,
-                ),
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
             ),
           ),
@@ -119,10 +113,7 @@ class _SebhaViewState extends State<SebhaView> {
             child: Center(
               child: Text(
                 label,
-                style: const TextStyle(
-                  fontSize: 25,
-                  fontFamily: 'El Messiri',
-                ),
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
             ),
           ),

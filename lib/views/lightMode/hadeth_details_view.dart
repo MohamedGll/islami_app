@@ -16,18 +16,6 @@ class _HadethDetailsViewState extends State<HadethDetailsView> {
     var model = ModalRoute.of(context)!.settings.arguments as HadethModel;
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        centerTitle: true,
-        title: const Text(
-          'إسلامي',
-          style: TextStyle(
-            fontSize: 30,
-            fontFamily: 'El Messiri',
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
@@ -53,9 +41,7 @@ class _HadethDetailsViewState extends State<HadethDetailsView> {
                   children: [
                     Text(
                       '${model.title}',
-                      style: const TextStyle(
-                        fontSize: 25,
-                      ),
+                      style: Theme.of(context).textTheme.bodyMedium,
                     ),
                     const Divider(
                       color: kPrimaryColorLight,
@@ -76,10 +62,7 @@ class _HadethDetailsViewState extends State<HadethDetailsView> {
                               child: Text(
                                 textDirection: TextDirection.rtl,
                                 model.content![index],
-                                style: const TextStyle(
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w400,
-                                ),
+                                style: Theme.of(context).textTheme.bodyMedium,
                               ),
                             );
                           },

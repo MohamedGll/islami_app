@@ -32,28 +32,13 @@ class _HomeViewState extends State<HomeView> {
           ),
         ),
         Scaffold(
-          backgroundColor: Colors.transparent,
           appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            centerTitle: true,
             title: const Text(
               'إسلامي',
-              style: TextStyle(
-                fontSize: 30,
-                fontFamily: 'El Messiri',
-                fontWeight: FontWeight.bold,
-              ),
             ),
           ),
           body: views.elementAt(currentIndex),
           bottomNavigationBar: BottomNavigationBar(
-            selectedFontSize: 12,
-            type: BottomNavigationBarType.fixed,
-            iconSize: 10,
-            showUnselectedLabels: false,
-            selectedItemColor: Colors.black,
-            unselectedItemColor: Colors.white,
-            backgroundColor: const Color(0xffB7935F),
             currentIndex: currentIndex,
             onTap: (index) {
               setState(() {

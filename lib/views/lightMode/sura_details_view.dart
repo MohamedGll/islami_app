@@ -48,14 +48,9 @@ class _SuraDetailsViewState extends State<SuraDetailsView> {
                 const SizedBox(
                   width: 83,
                 ),
-                const Text(
+                Text(
                   'إسلامي',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 30,
-                    fontFamily: 'El Messiri',
-                    fontWeight: FontWeight.w400,
-                  ),
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ],
             ),
@@ -80,9 +75,7 @@ class _SuraDetailsViewState extends State<SuraDetailsView> {
                           padding: const EdgeInsets.only(right: 12),
                           child: Text(
                             'سورة ${model.name}',
-                            style: const TextStyle(
-                              fontSize: 25,
-                            ),
+                            style: Theme.of(context).textTheme.bodyMedium,
                           ),
                         ),
                         const FaIcon(
@@ -110,10 +103,12 @@ class _SuraDetailsViewState extends State<SuraDetailsView> {
                               child: Text(
                                 verses[index],
                                 textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w400,
-                                ),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium!
+                                    .copyWith(
+                                      fontWeight: FontWeight.w400,
+                                    ),
                               ),
                             );
                           },
