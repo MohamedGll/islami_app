@@ -34,7 +34,7 @@ class _HomeViewState extends State<HomeView> {
         Scaffold(
           appBar: AppBar(
             title: const Text(
-              'إسلامي',
+              'islami',
             ),
           ),
           body: views.elementAt(currentIndex),
@@ -53,7 +53,7 @@ class _HomeViewState extends State<HomeView> {
                     'assets/images/icon_quran.png',
                   ),
                 ),
-                label: 'القرآن',
+                label: 'Quran',
               ),
               BottomNavigationBarItem(
                 icon: ImageIcon(
@@ -62,7 +62,7 @@ class _HomeViewState extends State<HomeView> {
                     'assets/images/icon_radio.png',
                   ),
                 ),
-                label: 'الراديو',
+                label: 'Radio',
               ),
               BottomNavigationBarItem(
                 icon: ImageIcon(
@@ -71,7 +71,7 @@ class _HomeViewState extends State<HomeView> {
                     'assets/images/icon_sebha.png',
                   ),
                 ),
-                label: 'التسبيح',
+                label: 'Sebha',
               ),
               BottomNavigationBarItem(
                 icon: ImageIcon(
@@ -80,14 +80,14 @@ class _HomeViewState extends State<HomeView> {
                     'assets/images/icon_hadeth.png',
                   ),
                 ),
-                label: 'الأحاديث',
+                label: 'Ahadeth',
               ),
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.settings,
                   size: 32,
                 ),
-                label: 'الاعدادات',
+                label: 'Settings',
               ),
             ],
           ),

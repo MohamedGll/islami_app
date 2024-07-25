@@ -263,15 +263,18 @@ class _QuranViewState extends State<QuranView> {
                     thickness: 3,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'عدد الآيات',
+                        'Number of Ayas',
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
-                      Text(
-                        'اسم السورة',
-                        style: Theme.of(context).textTheme.bodyMedium,
+                      Padding(
+                        padding: const EdgeInsets.only(right: 26),
+                        child: Text(
+                          'Sura Name',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
                       ),
                     ],
                   ),

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/constant.dart';
+import 'package:islami_app/widgets/language_bootom_sheet.dart';
+import 'package:islami_app/widgets/theme_bottom_sheet.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({super.key});
@@ -6,46 +9,78 @@ class SettingsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Container(
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                'assets/images/default_bg.png',
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 18),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const SizedBox(
+            height: 18,
+          ),
+          Text(
+            'Theme',
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+          const SizedBox(
+            height: 18,
+          ),
+          GestureDetector(
+            onTap: () {
+              showModalBottomSheet(
+                isDismissible: true,
+                isScrollControlled: true,
+                context: context,
+                builder: (context) {
+                  return const ThemeBottomSheet();
+                },
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(28),
+                border: Border.all(color: kPrimaryColorLight, width: 2),
               ),
-              fit: BoxFit.cover,
+              child: Text(
+                'Light',
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
             ),
           ),
-          child: const Column(
-            children: [
-              SizedBox(
-                height: 2,
-              ),
-              Text(
-                'إسلامي',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 30,
-                  fontFamily: 'El Messiri',
-                ),
-              ),
-              SizedBox(
-                height: 2,
-              ),
-              Text(
-                'اللغة',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 25,
-                  fontFamily: 'El Messiri',
-                ),
-                textAlign: TextAlign.right,
-              ),
-            ],
+          const SizedBox(
+            height: 50,
           ),
-        ),
+          Text(
+            'Language',
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+          const SizedBox(
+            height: 18,
+          ),
+          GestureDetector(
+            onTap: () {
+              showModalBottomSheet(
+                isDismissible: true,
+                isScrollControlled: true,
+                context: context,
+                builder: (context) {
+                  return const LanguageBottomSheet();
+                },
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(28),
+                border: Border.all(color: kPrimaryColorLight, width: 2),
+              ),
+              child: Text(
+                'English',
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

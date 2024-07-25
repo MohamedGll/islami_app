@@ -20,107 +20,91 @@ class _SuraDetailsViewState extends State<SuraDetailsView> {
       loadSuraFile(model.index!);
     }
 
-    return Scaffold(
-      body: Container(
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-              'assets/images/default_bg.png',
-            ),
-            fit: BoxFit.cover,
+    return Stack(
+      children: [
+        const Image(
+          image: AssetImage(
+            'assets/images/default_bg.png',
           ),
         ),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 26,
+        Scaffold(
+          appBar: AppBar(
+            title: Text(
+              'إسلامي',
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
-            Row(
-              children: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back),
-                ),
-                const SizedBox(
-                  width: 83,
-                ),
-                Text(
-                  'إسلامي',
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 29, right: 29, top: 28),
-              child: Container(
-                width: 354,
-                height: 600,
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(.7),
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 32,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 12),
-                          child: Text(
-                            'سورة ${model.name}',
-                            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+          body: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 29, right: 29, top: 28),
+                child: Container(
+                  width: 354,
+                  height: 600,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(.7),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 32,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 12),
+                            child: Text(
+                              'سورة ${model.name}',
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          ),
+                          const FaIcon(
+                            Icons.play_circle,
+                            size: 27,
+                          ),
+                        ],
+                      ),
+                      const Divider(
+                        endIndent: 40,
+                        indent: 40,
+                      ),
+                      const SizedBox(
+                        height: 18,
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 32),
+                          child: ListView.builder(
+                            physics: const BouncingScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(6.0),
+                                child: Text(
+                                  verses[index],
+                                  textAlign: TextAlign.center,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .copyWith(
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                ),
+                              );
+                            },
+                            itemCount: verses.length,
                           ),
                         ),
-                        const FaIcon(
-                          Icons.play_circle,
-                          size: 27,
-                        ),
-                      ],
-                    ),
-                    const Divider(
-                      endIndent: 40,
-                      indent: 40,
-                    ),
-                    const SizedBox(
-                      height: 18,
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom: 32),
-                        child: ListView.builder(
-                          physics: const BouncingScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: Text(
-                                verses[index],
-                                textAlign: TextAlign.center,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium!
-                                    .copyWith(
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                              ),
-                            );
-                          },
-                          itemCount: verses.length,
-                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
+      ],
     );
   }
 
