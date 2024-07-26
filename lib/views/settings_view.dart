@@ -31,7 +31,7 @@ class SettingsView extends StatelessWidget {
             onTap: () {
               showModalBottomSheet(
                 isDismissible: true,
-                isScrollControlled: true,
+                // isScrollControlled: true,
                 context: context,
                 builder: (context) {
                   return const ThemeBottomSheet();
@@ -67,8 +67,8 @@ class SettingsView extends StatelessWidget {
           GestureDetector(
             onTap: () {
               showModalBottomSheet(
-                isDismissible: false,
-                isScrollControlled: true,
+                isDismissible: true,
+                // isScrollControlled: true,
                 context: context,
                 builder: (context) {
                   return const LanguageBottomSheet();
