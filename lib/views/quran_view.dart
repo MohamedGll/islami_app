@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:islami_app/models/sura_model.dart';
 import 'package:islami_app/views/sura_details_view.dart';
@@ -263,18 +264,15 @@ class _QuranViewState extends State<QuranView> {
                     thickness: 3,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text(
-                        'Number of Ayas',
+                        'sura_names'.tr(),
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 26),
-                        child: Text(
-                          'Sura Name',
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
+                      Text(
+                        'numbers_of_aya'.tr(),
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ],
                   ),
@@ -304,11 +302,11 @@ class _QuranViewState extends State<QuranView> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                ayaCount[index],
+                                surasList[index],
                                 style: Theme.of(context).textTheme.bodyMedium,
                               ),
                               Text(
-                                surasList[index],
+                                ayaCount[index],
                                 style: Theme.of(context).textTheme.bodyMedium,
                               ),
                             ],

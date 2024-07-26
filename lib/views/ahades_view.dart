@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:islami_app/providers/ahadeth_provider.dart';
 import 'package:islami_app/views/hadeth_details_view.dart';
@@ -30,7 +31,7 @@ class AhadesView extends StatelessWidget {
               thickness: 3,
             ),
             Text(
-              'الأحاديث',
+              'Ahadeth'.tr(),
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyMedium,
             ),

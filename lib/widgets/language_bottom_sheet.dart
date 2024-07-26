@@ -4,14 +4,14 @@ import 'package:islami_app/constant.dart';
 import 'package:islami_app/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 
-class ThemeBottomSheet extends StatelessWidget {
-  const ThemeBottomSheet({super.key});
+class LanguageBottomSheet extends StatelessWidget {
+  const LanguageBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Locale currenteLocale = context.locale;
     var themeProvider = Provider.of<ThemeProvider>(context);
     return Container(
-      // height: MediaQuery.of(context).size.height * .6,
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: themeProvider.appTheme == ThemeMode.dark
@@ -27,26 +27,25 @@ class ThemeBottomSheet extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              themeProvider.changeTheme(ThemeMode.light);
-              Navigator.pop(context);
+              context.setLocale(const Locale('en'));
+              // themeProvider.changeLanguage(context, 'en');
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'light'.tr(),
+                  'english'.tr(),
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: themeProvider.appTheme == ThemeMode.dark
-                            ? Colors.white
-                            : kPrimaryColorLight,
-                      ),
+                      color: currenteLocale == const Locale('en')
+                          ? kPrimaryColorLight
+                          : Colors.black),
                 ),
-                themeProvider.appTheme == ThemeMode.dark
-                    ? const SizedBox()
-                    : const Icon(
+                currenteLocale == const Locale('en')
+                    ? const Icon(
                         Icons.done,
                         color: kPrimaryColorLight,
-                      ),
+                      )
+                    : const SizedBox()
               ],
             ),
           ),
@@ -55,26 +54,26 @@ class ThemeBottomSheet extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              themeProvider.changeTheme(ThemeMode.dark);
-              Navigator.pop(context);
+              context.setLocale(const Locale('ar'));
+              // themeProvider.changeLanguage(context, 'ar');
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'dark'.tr(),
+                  'arabic'.tr(),
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: themeProvider.appTheme == ThemeMode.dark
-                            ? yellowColor
+                        color: currenteLocale != const Locale('en')
+                            ? kPrimaryColorLight
                             : Colors.black,
                       ),
                 ),
-                themeProvider.appTheme == ThemeMode.dark
+                currenteLocale != const Locale('en')
                     ? const Icon(
                         Icons.done,
-                        color: yellowColor,
+                        color: kPrimaryColorLight,
                       )
-                    : const SizedBox(),
+                    : const SizedBox()
               ],
             ),
           ),

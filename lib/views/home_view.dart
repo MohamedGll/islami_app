@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:islami_app/providers/theme_provider.dart';
 import 'package:islami_app/views/ahades_view.dart';
@@ -38,8 +39,8 @@ class _HomeViewState extends State<HomeView> {
         ),
         Scaffold(
           appBar: AppBar(
-            title: const Text(
-              'islami',
+            title: Text(
+              'islami'.tr(),
             ),
           ),
           body: views.elementAt(currentIndex),

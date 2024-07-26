@@ -1,7 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:islami_app/constant.dart';
 import 'package:islami_app/providers/theme_provider.dart';
-import 'package:islami_app/widgets/language_bootom_sheet.dart';
+import 'package:islami_app/widgets/language_bottom_sheet.dart';
 import 'package:islami_app/widgets/theme_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 
@@ -11,7 +12,9 @@ class SettingsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var themProvider = Provider.of<ThemeProvider>(context);
+    var themeProvider = Provider.of<ThemeProvider>(context);
+    Locale currenteLocale = context.locale;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 18),
       child: Column(
@@ -21,7 +24,7 @@ class SettingsView extends StatelessWidget {
             height: 18,
           ),
           Text(
-            'Theme',
+            'theme'.tr(),
             style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(
@@ -43,13 +46,15 @@ class SettingsView extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(28),
                 border: Border.all(
-                    color: themProvider.appTheme == ThemeMode.dark
+                    color: themeProvider.appTheme == ThemeMode.dark
                         ? yellowColor
                         : kPrimaryColorLight,
                     width: 2),
               ),
               child: Text(
-                'Light',
+                themeProvider.appTheme == ThemeMode.dark
+                    ? 'dark'.tr()
+                    : 'light'.tr(),
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
@@ -58,7 +63,7 @@ class SettingsView extends StatelessWidget {
             height: 50,
           ),
           Text(
-            'Language',
+            'language'.tr(),
             style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(
@@ -80,13 +85,15 @@ class SettingsView extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(28),
                 border: Border.all(
-                    color: themProvider.appTheme == ThemeMode.dark
+                    color: themeProvider.appTheme == ThemeMode.dark
                         ? yellowColor
                         : kPrimaryColorLight,
                     width: 2),
               ),
               child: Text(
-                'English',
+                currenteLocale == const Locale('ar')
+                    ? 'arabic'.tr()
+                    : 'english'.tr(),
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
