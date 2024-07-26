@@ -6,15 +6,10 @@ import 'package:islami_app/providers/sura_details_provider.dart';
 import 'package:islami_app/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 
-class SuraDetailsView extends StatefulWidget {
+class SuraDetailsView extends StatelessWidget {
   const SuraDetailsView({super.key});
   static const String id = 'SuraDetailsView';
 
-  @override
-  State<SuraDetailsView> createState() => _SuraDetailsViewState();
-}
-
-class _SuraDetailsViewState extends State<SuraDetailsView> {
   @override
   Widget build(BuildContext context) {
     var themeProvider = Provider.of<ThemeProvider>(context);
@@ -30,12 +25,13 @@ class _SuraDetailsViewState extends State<SuraDetailsView> {
           ),
         ),
         ChangeNotifierProvider(
-          create: (context) => SuraDetailsProvider(),
+          create: (context) =>
+              SuraDetailsProvider()..loadSuraFile(model.index!),
           builder: (context, child) {
             var provider = Provider.of<SuraDetailsProvider>(context);
-            if (provider.verses.isEmpty) {
-              provider.loadSuraFile(model.index!);
-            }
+            // if (provider.verses.isEmpty) {
+            //   provider.loadSuraFile(model.index!);
+            // }
             return Scaffold(
               appBar: AppBar(
                 title: Text(
