@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/providers/theme_provider.dart';
 import 'package:islami_app/views/ahades_view.dart';
 import 'package:islami_app/views/quran_view.dart';
 import 'package:islami_app/views/radio_view.dart';
 import 'package:islami_app/views/sebha_view.dart';
 import 'package:islami_app/views/settings_view.dart';
+import 'package:provider/provider.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -24,11 +26,14 @@ class _HomeViewState extends State<HomeView> {
   ];
   @override
   Widget build(BuildContext context) {
+    var themeProvider = Provider.of<ThemeProvider>(context);
     return Stack(
       children: [
-        const Image(
+        Image(
           image: AssetImage(
-            'assets/images/default_bg.png',
+            themeProvider.appTheme == ThemeMode.dark
+                ? 'assets/images/dark_bg.png'
+                : 'assets/images/default_bg.png',
           ),
         ),
         Scaffold(

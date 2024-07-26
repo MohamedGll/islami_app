@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami_app/constant.dart';
 import 'package:islami_app/models/hadeth_model.dart';
 import 'package:islami_app/views/hadeth_details_view.dart';
 
@@ -34,7 +33,6 @@ class _AhadesViewState extends State<AhadesView> {
           width: 312,
         ),
         const Divider(
-          color: kPrimaryColorLight,
           thickness: 3,
         ),
         Text(
@@ -43,7 +41,6 @@ class _AhadesViewState extends State<AhadesView> {
           style: Theme.of(context).textTheme.bodyMedium,
         ),
         const Divider(
-          color: kPrimaryColorLight,
           thickness: 3,
         ),
         Expanded(

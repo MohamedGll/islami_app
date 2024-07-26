@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/constant.dart';
+import 'package:islami_app/providers/theme_provider.dart';
 import 'package:islami_app/widgets/language_bootom_sheet.dart';
 import 'package:islami_app/widgets/theme_bottom_sheet.dart';
+import 'package:provider/provider.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({super.key});
@@ -9,6 +11,7 @@ class SettingsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var themProvider = Provider.of<ThemeProvider>(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 18),
       child: Column(
@@ -39,7 +42,11 @@ class SettingsView extends StatelessWidget {
               padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(28),
-                border: Border.all(color: kPrimaryColorLight, width: 2),
+                border: Border.all(
+                    color: themProvider.appTheme == ThemeMode.dark
+                        ? yellowColor
+                        : kPrimaryColorLight,
+                    width: 2),
               ),
               child: Text(
                 'Light',
@@ -60,7 +67,7 @@ class SettingsView extends StatelessWidget {
           GestureDetector(
             onTap: () {
               showModalBottomSheet(
-                isDismissible: true,
+                isDismissible: false,
                 isScrollControlled: true,
                 context: context,
                 builder: (context) {
@@ -72,7 +79,11 @@ class SettingsView extends StatelessWidget {
               padding: const EdgeInsets.all(14),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(28),
-                border: Border.all(color: kPrimaryColorLight, width: 2),
+                border: Border.all(
+                    color: themProvider.appTheme == ThemeMode.dark
+                        ? yellowColor
+                        : kPrimaryColorLight,
+                    width: 2),
               ),
               child: Text(
                 'English',

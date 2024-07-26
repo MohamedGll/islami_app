@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/my_theme_data.dart';
+import 'package:islami_app/providers/theme_provider.dart';
 import 'package:islami_app/views/hadeth_details_view.dart';
 import 'package:islami_app/views/splash_view.dart';
 import 'package:islami_app/views/home_view.dart';
 import 'package:islami_app/views/sura_details_view.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const IslamiApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ThemeProvider(),
+      child: const IslamiApp(),
+    ),
+  );
 }
 
 class IslamiApp extends StatelessWidget {
@@ -14,8 +21,9 @@ class IslamiApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var themeProvider = Provider.of<ThemeProvider>(context);
     return MaterialApp(
-      themeMode: ThemeMode.light,
+      themeMode: themeProvider.appTheme,
       theme: MyThemeData.lightTheme,
       darkTheme: MyThemeData.darkTheme,
       debugShowCheckedModeBanner: false,

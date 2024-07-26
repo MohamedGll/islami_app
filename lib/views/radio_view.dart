@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/constant.dart';
+import 'package:islami_app/providers/theme_provider.dart';
+import 'package:provider/provider.dart';
 
 class RadioView extends StatelessWidget {
   const RadioView({super.key});
@@ -7,6 +9,8 @@ class RadioView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var themeProvider = Provider.of<ThemeProvider>(context);
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -19,7 +23,7 @@ class RadioView extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 28),
           child: Text(
-            'إذاعة القراّن الكريم',
+            'إذاعة القرآن الكريم',
             style: Theme.of(context).textTheme.bodyMedium,
           ),
         ),
@@ -28,30 +32,32 @@ class RadioView extends StatelessWidget {
           children: [
             IconButton(
               onPressed: () {},
-              icon: const Icon(
+              icon: Icon(
                 Icons.skip_previous,
                 size: 42,
-                color: kPrimaryColorLight,
+                color: themeProvider.appTheme == ThemeMode.dark
+                    ? yellowColor
+                    : kPrimaryColorLight,
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 22),
               child: IconButton(
                 onPressed: () {},
-                icon: const Icon(
-                  Icons.play_arrow_rounded,
-                  size: 62,
-                  color: kPrimaryColorLight,
-                ),
+                icon: Icon(Icons.play_arrow_rounded,
+                    size: 62,
+                    color: themeProvider.appTheme == ThemeMode.dark
+                        ? yellowColor
+                        : kPrimaryColorLight),
               ),
             ),
             IconButton(
               onPressed: () {},
-              icon: const Icon(
-                Icons.skip_next,
-                size: 42,
-                color: kPrimaryColorLight,
-              ),
+              icon: Icon(Icons.skip_next,
+                  size: 42,
+                  color: themeProvider.appTheme == ThemeMode.dark
+                      ? yellowColor
+                      : kPrimaryColorLight),
             ),
           ],
         ),

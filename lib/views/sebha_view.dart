@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/constant.dart';
+import 'package:islami_app/providers/theme_provider.dart';
+import 'package:provider/provider.dart';
 
 class SebhaView extends StatefulWidget {
   const SebhaView({super.key});
@@ -28,6 +31,8 @@ class _SebhaViewState extends State<SebhaView> {
 
   @override
   Widget build(BuildContext context) {
+    var themeProvider = Provider.of<ThemeProvider>(context);
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -59,7 +64,9 @@ class _SebhaViewState extends State<SebhaView> {
                 child: Transform.rotate(
                   angle: rotation,
                   child: Image.asset(
-                    'assets/images/body_sebha_logo.png',
+                    themeProvider.appTheme == ThemeMode.dark
+                        ? 'assets/images/body_sebha_dark.png'
+                        : 'assets/images/body_sebha_logo.png',
                     width: 232,
                     height: 234,
                   ),
@@ -69,7 +76,9 @@ class _SebhaViewState extends State<SebhaView> {
                 left: 100,
                 bottom: 207,
                 child: Image.asset(
-                  'assets/images/head_sebha_logo.png',
+                  themeProvider.appTheme == ThemeMode.dark
+                      ? 'assets/images/head_sebha_dark.png'
+                      : 'assets/images/head_sebha_logo.png',
                   width: 73,
                   height: 105,
                 ),
@@ -90,7 +99,9 @@ class _SebhaViewState extends State<SebhaView> {
             width: 69,
             height: 81,
             decoration: BoxDecoration(
-              color: const Color(0xffC9B496),
+              color: themeProvider.appTheme == ThemeMode.dark
+                  ? kPrimaryColorDark
+                  : const Color(0xffC9B496),
               borderRadius: BorderRadius.circular(25),
             ),
             child: Center(
@@ -107,7 +118,9 @@ class _SebhaViewState extends State<SebhaView> {
             width: 137,
             height: 51,
             decoration: BoxDecoration(
-              color: const Color(0xffB7935F),
+              color: themeProvider.appTheme == ThemeMode.dark
+                  ? yellowColor
+                  : const Color(0xffB7935F),
               borderRadius: BorderRadius.circular(25),
             ),
             child: Center(

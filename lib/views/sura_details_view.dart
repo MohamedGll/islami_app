@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:islami_app/constant.dart';
 import 'package:islami_app/models/sura_model.dart';
+import 'package:islami_app/providers/theme_provider.dart';
+import 'package:provider/provider.dart';
 
 class SuraDetailsView extends StatefulWidget {
   const SuraDetailsView({super.key});
@@ -15,6 +18,7 @@ class _SuraDetailsViewState extends State<SuraDetailsView> {
   List<String> verses = [];
   @override
   Widget build(BuildContext context) {
+    var themeProvider = Provider.of<ThemeProvider>(context);
     var model = ModalRoute.of(context)!.settings.arguments as SuraModel;
     if (verses.isEmpty) {
       loadSuraFile(model.index!);
@@ -22,15 +26,17 @@ class _SuraDetailsViewState extends State<SuraDetailsView> {
 
     return Stack(
       children: [
-        const Image(
+        Image(
           image: AssetImage(
-            'assets/images/default_bg.png',
+            themeProvider.appTheme == ThemeMode.dark
+                ? 'assets/images/dark_bg.png'
+                : 'assets/images/default_bg.png',
           ),
         ),
         Scaffold(
           appBar: AppBar(
             title: Text(
-              'إسلامي',
+              'islami',
               style: Theme.of(context).textTheme.bodyLarge,
             ),
           ),
@@ -42,7 +48,9 @@ class _SuraDetailsViewState extends State<SuraDetailsView> {
                   width: 354,
                   height: 600,
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(.7),
+                    color: themeProvider.appTheme == ThemeMode.dark
+                        ? kPrimaryColorDark
+                        : Colors.white.withOpacity(.7),
                     borderRadius: BorderRadius.circular(25),
                   ),
                   child: Column(
@@ -60,9 +68,12 @@ class _SuraDetailsViewState extends State<SuraDetailsView> {
                               style: Theme.of(context).textTheme.bodyMedium,
                             ),
                           ),
-                          const FaIcon(
+                          FaIcon(
                             Icons.play_circle,
                             size: 27,
+                            color: themeProvider.appTheme == ThemeMode.dark
+                                ? yellowColor
+                                : Colors.white,
                           ),
                         ],
                       ),

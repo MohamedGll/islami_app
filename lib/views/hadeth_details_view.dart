@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/constant.dart';
 import 'package:islami_app/models/hadeth_model.dart';
+import 'package:islami_app/providers/theme_provider.dart';
+import 'package:provider/provider.dart';
 
 class HadethDetailsView extends StatefulWidget {
   const HadethDetailsView({super.key});
@@ -13,18 +16,21 @@ class _HadethDetailsViewState extends State<HadethDetailsView> {
   @override
   Widget build(BuildContext context) {
     var model = ModalRoute.of(context)!.settings.arguments as HadethModel;
+    var themeProvider = Provider.of<ThemeProvider>(context);
 
     return Stack(
       children: [
-        const Image(
+        Image(
           image: AssetImage(
-            'assets/images/default_bg.png',
+            themeProvider.appTheme == ThemeMode.dark
+                ? 'assets/images/dark_bg.png'
+                : 'assets/images/default_bg.png',
           ),
         ),
         Scaffold(
           appBar: AppBar(
             title: Text(
-              'إسلامي',
+              'islami',
               style: Theme.of(context).textTheme.bodyLarge,
             ),
           ),
@@ -36,7 +42,9 @@ class _HadethDetailsViewState extends State<HadethDetailsView> {
                   width: 354,
                   height: 600,
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(.7),
+                    color: themeProvider.appTheme == ThemeMode.dark
+                        ? kPrimaryColorDark
+                        : Colors.white.withOpacity(.7),
                     borderRadius: BorderRadius.circular(25),
                   ),
                   child: Column(
