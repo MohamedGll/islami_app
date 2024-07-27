@@ -7,10 +7,12 @@ import 'package:islami_app/views/splash_view.dart';
 import 'package:islami_app/views/home_view.dart';
 import 'package:islami_app/views/sura_details_view.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+
   runApp(
     ChangeNotifierProvider(
       create: (context) => ThemeProvider(),
@@ -19,18 +21,20 @@ void main() async {
         path: 'assets/translations',
         startLocale: const Locale('en'),
         saveLocale: true,
-        child: const IslamiApp(),
+        child: IslamiApp(),
       ),
     ),
   );
 }
 
 class IslamiApp extends StatelessWidget {
-  const IslamiApp({super.key});
+  IslamiApp({super.key});
+  late ThemeProvider themeProvider;
 
   @override
   Widget build(BuildContext context) {
-    var themeProvider = Provider.of<ThemeProvider>(context);
+    themeProvider = Provider.of<ThemeProvider>(context);
+    getTheme();
     return MaterialApp(
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
@@ -47,5 +51,18 @@ class IslamiApp extends StatelessWidget {
         HadethDetailsView.id: (context) => const HadethDetailsView(),
       },
     );
+  }
+
+  getTheme() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool? isDark = prefs.getBool('isDark');
+    if (isDark != null) {
+      if (isDark) {
+        themeProvider.appTheme = ThemeMode.dark;
+      } else {
+        themeProvider.appTheme = ThemeMode.light;
+      }
+      themeProvider.notifyListeners();
+    }
   }
 }

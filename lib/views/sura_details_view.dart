@@ -68,12 +68,15 @@ class SuraDetailsView extends StatelessWidget {
                                   style: Theme.of(context).textTheme.bodyMedium,
                                 ),
                               ),
+                              const SizedBox(
+                                width: 14,
+                              ),
                               FaIcon(
                                 Icons.play_circle,
                                 size: 27,
                                 color: themeProvider.appTheme == ThemeMode.dark
                                     ? yellowColor
-                                    : Colors.white,
+                                    : Colors.black,
                               ),
                             ],
                           ),

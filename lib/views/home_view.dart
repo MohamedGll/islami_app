@@ -28,6 +28,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     var themeProvider = Provider.of<ThemeProvider>(context);
+    Locale currenteLocal = context.locale;
     return Stack(
       children: [
         Image(
@@ -51,49 +52,55 @@ class _HomeViewState extends State<HomeView> {
                 currentIndex = index;
               });
             },
-            items: const [
+            items: [
               BottomNavigationBarItem(
-                icon: ImageIcon(
+                icon: const ImageIcon(
                   size: 38,
                   AssetImage(
                     'assets/images/icon_quran.png',
                   ),
                 ),
-                label: 'Quran',
+                label: currenteLocal == const Locale('en') ? 'Quran' : 'القرآن',
               ),
               BottomNavigationBarItem(
-                icon: ImageIcon(
+                icon: const ImageIcon(
                   size: 32,
                   AssetImage(
                     'assets/images/icon_radio.png',
                   ),
                 ),
-                label: 'Radio',
+                label:
+                    currenteLocal == const Locale('en') ? 'Radio' : 'الراديو',
               ),
               BottomNavigationBarItem(
-                icon: ImageIcon(
+                icon: const ImageIcon(
                   size: 32,
                   AssetImage(
                     'assets/images/icon_sebha.png',
                   ),
                 ),
-                label: 'Sebha',
+                label:
+                    currenteLocal == const Locale('en') ? 'Sebha' : 'التسبيح',
               ),
               BottomNavigationBarItem(
-                icon: ImageIcon(
+                icon: const ImageIcon(
                   size: 32,
                   AssetImage(
                     'assets/images/icon_hadeth.png',
                   ),
                 ),
-                label: 'Ahadeth',
+                label: currenteLocal == const Locale('en')
+                    ? 'Ahadeth'
+                    : 'الأحاديث',
               ),
               BottomNavigationBarItem(
-                icon: Icon(
+                icon: const Icon(
                   Icons.settings,
                   size: 32,
                 ),
-                label: 'Settings',
+                label: currenteLocal == const Locale('en')
+                    ? 'Settings'
+                    : 'الإعدادات',
               ),
             ],
           ),
